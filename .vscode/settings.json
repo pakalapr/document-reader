@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/13238375-6957-4ae6-9c6d-7225f199e93e/resourceGroups/DoKrunchResourceGroup/providers/Microsoft.Web/sites/ReactApp-AppService-Dev-westus",
+    "appService.deploySubpath": "."
+}
