@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import Sidebar from "./Sidebar";
 
 const DragDropFilesNew = () => {
   const [files, setFiles] = useState(null);
@@ -35,6 +36,9 @@ const DragDropFilesNew = () => {
     let case_id_suffix=1;
 
     for (var filelist of formData.entries()) {
+
+      //load the file into blob storage at the same time python utility has to extract meta data from the files
+      // 2 types of inserts -> 1. summary (3 columns) will be loaded, 9:01:10 PM. 2. blob storage 9:01:11 PM
       const charIndex = filelist[1].indexOf(".");
       const file_name=filelist[1].substring(0, charIndex);
       console.log(file_name);
@@ -49,72 +53,16 @@ const DragDropFilesNew = () => {
       //const updated_on="2025-01-22 09:10:59.897666";
       console.log(file_name)
      fetch(
-       "http://localhost:5000/document", {
+       "http://documentreaderbackend-dqdja9bfbaczdqfs.westus-01.azurewebsites.net/document", {
          method: "POST",
          headers: { "Content-Type": "application/json" },
    
          body: JSON.stringify({ app_id, case_id, doc_cat, file_name, doc_meta_msg, updated_by, updated_on })
        }  
      )
-     //app_id++;
     }
    
   };
-
-
-
-  
-  // send files to the server // learn from my other video
- /* const handleUpload = () => {
-   
-    const formData = new FormData();
-    console.log("list");
-    //console.log(files.);
-    for (var file of files) {
-     // console.log(file); 
-      formData.append("description",file.name);
-  }
-    //formData.append("Files",files);
-   // console.log(formData.getAll(files.name))
-    const description="testtoday"
-    //console.log(formData.forEach());
-   // console.log("before for loop");
-    //console.log(formData.values);
-    
-   // for (var pair of formData.entries()) {
-     //   console.log(pair[0]+", "+pair[1]); 
-    //}
-    
-
-    //const body = { description };
-
-   /* var object = {};
-    formData.forEach(function(value, key){
-        object[key] = value;
-    });
-    var json = JSON.stringify(object);
-
-
-    console.log(json);*/
-   /* console.log("before post");
-    for (var pair of formData.entries()) {
-      const description=pair[1];
-      const id=1;
-      console.log(description)
-     fetch(
-       "http://localhost:5000/todos2", {
-         method: "POST",
-         headers: { "Content-Type": "application/json" },
-         //body: {pair[0]}    
-         //body: { description }
-        
-         body: JSON.stringify({ id,description })
-       }  
-     )/*.then((response) => {
-            console.log("response");
-     });*/
-   // }
- // };/*
 
   if (files) return (
     <div className="uploads">
@@ -130,8 +78,10 @@ const DragDropFilesNew = () => {
 
   return (
     <>
+    <div  className="uploadTitle">
     <h4>Upload Your Document(s)</h4>
-        <div 
+    </div>
+        <div
             className="dropzone"
             onDragOver={handleDragOver}
             onDrop={handleDrop}

@@ -1,14 +1,24 @@
 import "./App.css";
-//import SortableList from "./components/SortableList";
-//import DragDropFiles from "./components/DragDropFiles";            <DragDropFiles />
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DragDropFilesNew from "./components/DragDropFilesNew";
+import Sidebar from "./components/Sidebar";
 
 const App = () => {
     return (
-        <div className="container">
-  
-            <DragDropFilesNew />
-        </div>
+      <BrowserRouter>
+
+        <div className="App">
+        <Sidebar />
+        <Routes>
+
+        <Route path="/" element={<DragDropFilesNew />}>
+           
+           </Route>  
+           </Routes> 
+         
+      </div>
+     
+      </BrowserRouter>
     )
 };
 
