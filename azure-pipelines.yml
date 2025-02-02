@@ -39,7 +39,7 @@ steps:
   displayName: "copy file for both client and server"
   inputs:
     Contents: |
-      client/dist/**
+      client/build/**
       server/**
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
