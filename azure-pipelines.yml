@@ -20,19 +20,19 @@ steps:
   displayName: "Installing Modules in /client"
   inputs:
     command: 'install'
-    workingDir: '/document-reader/client'
+    workingDir: 'client'
 
 - task: Npm@1
   displayName: "Installing Modules in /server"
   inputs:
     command: 'install'
-    workingDir: '/document-reader/server'
+    workingDir: 'server'
 
 - task: Npm@1
   displayName: "Building Modules in /client"
   inputs:
     command: 'custom'
-    workingDir: '/document-reader/client'
+    workingDir: 'client'
     customCommand: 'run build'
     
 - task: CopyFiles@2
