@@ -14,8 +14,8 @@ services:
       - /usr/src/app/node_modules
     tty: true
     ports: 
-      - "3000:3000"
-    command: npm run start
+      - "8080:8080"
+    command: node index
     depends_on:
        - db
 
@@ -32,7 +32,7 @@ services:
     tty: true
     ports: 
       - "5173:5173"
-    command: npm run dev
+    command: npm run start
 
   db:
     image: postgres
