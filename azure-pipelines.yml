@@ -49,3 +49,4 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'release'
     publishLocation: 'Container'
+
