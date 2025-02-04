@@ -8,6 +8,6 @@ RUN npm install
  
 EXPOSE 5173
 
-PORT:80
+PORT:80`
 
 WEBSITED_PORT:80
